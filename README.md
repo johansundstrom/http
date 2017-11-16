@@ -15,8 +15,8 @@ Kommunicera med HTTP
 ## HTTP GET Request
 * En klient sänder ett request enligt följande...
 ```
-En requestrad
-Inga eller flera header fält följt av CRLF
-En tom rad med endast CRLF (betyder slut på header
-Valfri meddelandefält
+1. En requestrad
+2. Inga eller flera header fält följt av CRLF
+3. En tom rad med endast CRLF (betyder slut på header)
+4. Valfritt meddelandefält
 ```
