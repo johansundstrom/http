@@ -4,6 +4,7 @@ Kommunicera med HTTP
 * Alla typer av data kan sändas med HTTP
 * HTTP använder en klient-server model
 * Senaste versionen av HTTP är "HTTP/1.1", föregångaren heter "HTTP/1.0"
+* HTTP/1.1 klarar t.ex. flera transaktioner på samma uppkoppling (snabbare)
 * Det finns 8 st olika metoder av _Request's_ men de fyra vanligaste beskrivs här
 * Protokollet HTTP är ett felsäkert världsomspännande protokoll
 * Återkoppling ges vid sändning
@@ -20,16 +21,16 @@ Kommunicera med HTTP
 ## HTTP Metoder
 * GET, POST, PUT, DELETE är de vanligaste metoderna
 
-| Metod  | CRUD | Beskrivning   |
-|--------|------|---------------|
-| POST   | C    | Skickar data  |
-| GET    | R    | Hämtar data   |
-| PUT    | U    | Ersätter data |
-| DELETE | D    | Raderar data  |
+| Metod  | CRUD | Beskrivning          | Användning                       |
+|--------|------|----------------------|----------------------------------|
+| POST   | C    | Skickar data         | namn/värde i postformat          |
+| GET    | R    | Hämtar data          | namn/värde tillagd synlig på URL | 
+| PUT    | U    | Ersätter/skapar data | namn/värde i postformat
+| DELETE | D    | Raderar data         |
 
 ## HTTP GET Request
 
-Ovanstående kan exempliferas med följande som begär filen /api/index.html från be9.asuscomm.com
+Ovanstående kan exempliferas med följande som begär filen /api/index.html från be9.asuscomm.com. 
 ```
 GET /api/index.html HTTP/1.1<crlf>
 Host: be9.asuscomm.com<crlf>
@@ -38,20 +39,42 @@ Connection: Keep-Alive<crlf>
 <crlf>
 temp=21.123&date=1510834647&room=hall
 ```
-Ett Javascript kan se ut på följande sätt (stackoverflow.com)
-```javascript
-var request = new XMLHttpRequest();
-request.onreadystatechange = function() {
-    if (request.readyState === 4) {
-        if (request.status === 200) {
-            document.body.className = 'ok';
-            console.log(request.responseText);
-        } else {
-            document.body.className = 'error';
-        }
-    }
-};
-let url = "be9.asuscomm.com";
-request.open("GET", url , true);
-request.send(null);
+
+## HTTP POST Request
+```
+POST /api HTTP/1.1<crlf>        //inget filnamn är begärt
+Host: be9.asuscomm.com<crlf>
+Content-Type: application/x-www-form-urlencoded<crlf>
+Content-Length: 34<crlf>
+<crlf>
+temp=21.123&date=1510834647&room=hall
+```
+
+## HTTP PUT Request
+* PUT Request ersätter befintlig data. Om inte detta existerar så skapas det istället, precis som POST
+* Exempel 
+```
+PUT /api/room/ HTTP/1.1<crlf>         //inget filnamn är begärt
+Host: be9.asuscomm.com<crlf>
+Accept: application/json<crlf>
+Content-Length: 37<crlf>
+<crlf>
+{
+    "_Id": 4, 
+    "room": "hall"
+}
+```
+
+## HTTP DELETE Request
+* PUT Request raderar befintlig data
+* Exempel 
+```
+DELETE /api/room/ HTTP/1.1<crlf>         //inget filnamn är begärt
+Host: be9.asuscomm.com<crlf>
+Accept: application/json<crlf>
+Content-Length: 17<crlf>
+<crlf>
+{
+    "_Id": 4
+}
 ```
