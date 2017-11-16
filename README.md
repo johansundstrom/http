@@ -12,7 +12,7 @@ Kommunicera med HTTP
 ## HTTP Metoder
 * GET, POST, PUT, DELETE är de vanligaste metoderna
 | Metod  | CRUD | Beskrivning   |
-|-------------------------------|
+|--------|------|---------------|
 | POST   | C    | Skickar data  |
 | GET    | R    | Hämtar data   |
 | PUT    | U    | Ersätter data |
