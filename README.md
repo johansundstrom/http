@@ -25,8 +25,8 @@ Kommunicera med HTTP
 |--------|------|----------------------|----------------------------------|
 | POST   | C    | Skickar data         | namn/värde i postformat          |
 | GET    | R    | Hämtar data          | namn/värde tillagd synlig på URL | 
-| PUT    | U    | Ersätter/skapar data | namn/värde i postformat
-| DELETE | D    | Raderar data         |
+| PUT    | U    | Ersätter/skapar data | namn/värde i postformat          |
+| DELETE | D    | Raderar data         | posta id att radera              |
 
 ## HTTP GET Request
 
