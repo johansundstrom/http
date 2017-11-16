@@ -8,7 +8,15 @@ Kommunicera med HTTP
 * Protokollet HTTP är ett felsäkert världsomspännande protokoll
 * Återkoppling ges vid sändning
 * Sändning sker i klartext
-* 
+* Radframmatningarna <crlf> är 0x0d, 0x0a, aka "\r\n"
+* En klient sänder ett request enligt följande...
+```
+1. En requestrad
+2. Inga eller flera header fält följt av CRLF
+3. En tom rad med endast CRLF (betyder slut på header)
+4. Valfritt meddelandefält
+```
+
 ## HTTP Metoder
 * GET, POST, PUT, DELETE är de vanligaste metoderna
 
@@ -20,13 +28,7 @@ Kommunicera med HTTP
 | DELETE | D    | Raderar data  |
 
 ## HTTP GET Request
-* En klient sänder ett request enligt följande...
-```
-1. En requestrad
-2. Inga eller flera header fält följt av CRLF
-3. En tom rad med endast CRLF (betyder slut på header)
-4. Valfritt meddelandefält
-```
+
 Ovanstående kan exempliferas med följande som begär filen /api/index.html från be9.asuscomm.com
 ```
 GET /api/index.html HTTP/1.1<crlf>
@@ -35,4 +37,21 @@ Accept-Language: sv-se<crlf>
 Connection: Keep-Alive<crlf>
 <crlf>
 temp=21.123&date=1510834647&room=hall
+```
+Ett Javascript kan se ut på följande sätt (stackoverflow.com)
+```javascript
+var request = new XMLHttpRequest();
+request.onreadystatechange = function() {
+    if (request.readyState === 4) {
+        if (request.status === 200) {
+            document.body.className = 'ok';
+            console.log(request.responseText);
+        } else {
+            document.body.className = 'error';
+        }
+    }
+};
+let url = "be9.asuscomm.com";
+request.open("GET", url , true);
+request.send(null);
 ```
