@@ -4,14 +4,19 @@ Kommunicera med HTTP
 * Alla typer av data kan sändas med HTTP
 * HTTP använder en klient-server model
 * Senaste versionen av HTTP är "HTTP/1.1", föregångaren heter "HTTP/1.0"
-* Det finns 8 st olika metoder av _Request's_ men fyra an vanligast förekommande
+* Det finns 8 st olika metoder av _Request's_ men de fyra vanligaste beskrivs här
 * Protokollet HTTP är ett felsäkert världsomspännande protokoll
 * Återkoppling ges vid sändning
 * Sändning sker i klartext
 * 
 ## HTTP Metoder
 * GET, POST, PUT, DELETE är de vanligaste metoderna
-
+| Metod  | CRUD | Beskrivning   |
+|-------------------------------|
+| POST   | C    | Skickar data  |
+| GET    | R    | Hämtar data   |
+| PUT    | U    | Ersätter data |
+| DELETE | D    | Raderar data  |
 ## HTTP GET Request
 * En klient sänder ett request enligt följande...
 ```
