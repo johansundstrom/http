@@ -20,3 +20,12 @@ Kommunicera med HTTP
 3. En tom rad med endast CRLF (betyder slut på header)
 4. Valfritt meddelandefält
 ```
+Ovanstående kan exempliferas med följande som begär filen /api/index.html från be9.asuscomm.com
+```
+GET /api/index.html HTTP/1.1<crlf>
+Host: be9.asuscomm.com<crlf>
+Accept-Language: sv-se<crlf>
+Connection: Keep-Alive<crlf>
+<crlf>
+temp=21.123&date=1510834647&room=hall
+```
